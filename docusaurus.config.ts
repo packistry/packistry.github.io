@@ -7,7 +7,7 @@ const config: Config = {
   tagline: 'Packistry is a Composer repository for PHP packages ',
 
   url: 'https://packistry.github.io',
-  baseUrl: '/',
+  baseUrl: '/docs',
 
   organizationName: 'packistry',
   projectName: 'docs',
