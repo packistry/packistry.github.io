@@ -10,7 +10,6 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in light mode */
 [data-theme='light'] {
   --ifm-color-primary: #2b2b2b;
   --ifm-color-primary-dark: #272727;
@@ -25,17 +24,26 @@
   --button-background-color: #171717;
 }
 
-/* Dark mode styles */
 [data-theme='dark'] {
-  --ifm-background-color: #121212;
-  --ifm-background-surface-color: #1e1e1e;
-  --ifm-navbar-background-color: #1e1e1e;
-  --ifm-footer-background-color: #1e1e1e;
+  --ifm-background-color: #0a0a0a;
+  --ifm-color-primary-dark: #0a0a0a;
+  --ifm-background-surface-color: #0a0a0a;
+  --ifm-navbar-background-color: #0a0a0a;
+  --ifm-footer-background-color: #0a0a0a;
+  --background-color: #0a0a0a;
   --border-color: rgb(38, 38, 38);
   --button-color: rgb(23, 23, 23);
   --button-background-color: #fafafa;
 }
 
+
+body {
+  background-color: var(--background-color)!important;
+}
+
+.main-wrapper {
+  background-color: var(--background-color)!important;
+}
 
 .button {
   background-color: var(--button-background-color)!important;
@@ -45,14 +53,16 @@
 }
 
 .hero {
+  background-color: var(--background-color)!important;
   border-bottom: 1px solid var(--border-color);
 }
 .navbar {
+  background-color: var(--background-color)!important;
   border-bottom: 1px solid var(--border-color);
 }
 
 .footer {
-  background-color: var(--ifm-background-color);
+  background-color: var(--background-color)!important;
   color: var(--ifm-color-primary);
   border-top: 1px solid var(--border-color);
 }
