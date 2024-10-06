@@ -19,6 +19,8 @@
   --ifm-color-primary-lighter: #313131;
   --ifm-color-primary-lightest: #383838;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --background-color: #ffffff;
+
   --border-color: rgb(229, 229, 229);
   --button-color: rgb(250, 250, 250);
   --button-background-color: #171717;
@@ -44,6 +46,7 @@
 body {
   background-color: var(--background-color)!important;
 }
+
 
 .main-wrapper {
   background-color: var(--background-color)!important;
