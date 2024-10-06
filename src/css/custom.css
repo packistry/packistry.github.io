@@ -36,6 +36,10 @@
   --button-background-color: #fafafa;
 }
 
+.theme-doc-markdown a {
+  font-weight: bold;
+  text-decoration: underline;
+}
 
 body {
   background-color: var(--background-color)!important;
