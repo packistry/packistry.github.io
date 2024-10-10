@@ -7,7 +7,7 @@ const config: Config = {
   tagline: 'Packistry is a Composer repository for PHP packages ',
 
   url: 'https://packistry.github.io',
-  baseUrl: '/docs',
+  baseUrl: '/',
 
   organizationName: 'packistry',
   projectName: 'docs',
@@ -68,7 +68,7 @@ const config: Config = {
           items: [
             {
               label: 'Installation',
-              to: '/docs/docs/getting-started/installation',
+              to: '/docs/getting-started/installation',
             },
           ],
         },
@@ -77,11 +77,11 @@ const config: Config = {
           items: [
             {
               label: 'Using MySQL Database',
-              to: '/docs/docs/guides/mysql',
+              to: '/docs/guides/mysql',
             },
             {
               label: 'Store Package Archives in S3',
-              to: '/docs/docs/guides/store-archives-s3',
+              to: '/docs/guides/store-archives-s3',
             },
           ],
         },
