@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Packistry',
-  tagline: 'Packistry is a Composer repository for PHP packages ',
+  tagline: 'Open Source self-hosted Composer repository for PHP packages ',
 
   url: 'https://packistry.github.io',
   baseUrl: '/',
