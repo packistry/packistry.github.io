@@ -23,7 +23,7 @@ function HomepageHeader() {
                     Read installation guide
                 </Link>
             </div>
-            <video style={{width: '100%', marginTop: 50}} controls src="/demo.mp4"></video>
+            <video style={{width: '100%', marginTop: 50}} controls src="/demo.mp4"  poster="/img/thumbnail.png"></video>
         </div>
     </header>
   );
