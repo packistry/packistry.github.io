@@ -154,4 +154,4 @@ composer require vendor/name
 
 ---
 
-By following these steps, you can quickly set up and start using Packistry to manage your Composer packages in a self-hosted environment. For further configurations or troubleshooting, refer to the [Packistry documentation](#) (add link if available).
+By following these steps, you can quickly set up and start using Packistry to manage your Composer packages in a self-hosted environment.
