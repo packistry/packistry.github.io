@@ -79,7 +79,7 @@ Navigate to [http://localhost/repositories?open=true](http://localhost/repositor
 
 ### 5. Add Sources
 
-Navigate to [http://localhost/sources?open=true](http://localhost/sources?open=true) to connect your repositories from platforms like GitHub, GitLab, or Gitea.
+Navigate to [http://localhost/sources?open=true](http://localhost/sources?open=true) to connect your repositories from platforms like GitHub, GitLab, Gitea or Bitbucket.
 
 ---
 

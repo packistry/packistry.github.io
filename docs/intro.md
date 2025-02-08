@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-Welcome to **Packistry**, a powerful, self-hosted Composer repository designed to simplify PHP package distribution. Whether you're managing private or public Composer repositories, Packistry offers robust tools for controlling access, managing updates, and integrating multiple source providers. With easy setup and support for platforms like GitHub, GitLab, and Gitea, Packistry puts you in charge of your PHP package management with only a few commands.
+Welcome to **Packistry**, a powerful, self-hosted Composer repository designed to simplify PHP package distribution. Whether you're managing private or public Composer repositories, Packistry offers robust tools for controlling access, managing updates, and integrating multiple source providers. With easy setup and support for platforms like GitHub, GitLab, Gitea and Bitbucket, Packistry puts you in charge of your PHP package management with only a few commands.
 
 Packistry ensures seamless package updates through webhook integration, making it easier than ever to maintain the latest versions. This system allows developers to have full control over their packages, access management, and security, all within a self-hosted environment.
 
@@ -18,6 +18,7 @@ Packistry ensures seamless package updates through webhook integration, making i
   - **GitHub**
   - **GitLab**
   - **Gitea**
+  - **Bitbucket**
 
   Stay up to date automatically, as Packistry uses **webhooks** to pull the latest changes from your source repositories.
 

@@ -83,6 +83,10 @@ const config: Config = {
               label: 'Store Package Archives in S3',
               to: '/docs/guides/store-archives-s3',
             },
+            {
+              label: 'Deploy Packistry with Kamal',
+              to: '/docs/guides/kamal',
+            },
           ],
         },
       ],

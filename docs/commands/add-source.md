@@ -25,7 +25,7 @@ When you run the command, it will guide you through the following inputs:
 First, you will be asked to provide a **name** for the package source. This is a label that helps you identify the source.
 
 ### 2. **Provider**
-Next, you will select a **provider** for the source. This can be a system like GitHub, GitLab, Gitea, or another supported package provider. You will be given a list of options to choose from.
+Next, you will select a **provider** for the source. This can be a system like GitHub, GitLab, Gitea, or Bitbucket. You will be given a list of options to choose from.
 
 ### 3. **Base URL**
 You will then be prompted to enter the **base URL** for the source. For example, if your provider is GitHub, the base URL would be `https://api.github.com`. 
