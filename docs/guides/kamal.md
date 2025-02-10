@@ -104,8 +104,8 @@ To deploy updates or new versions of the Packistry, follow these steps:
 **Update the Dockerfile**: In the root of your project, modify the `Dockerfile` to use the latest version of the Packistry image. For example, update the version number as follows:
 
 ```diff
-- FROM ghcr.io/packistry/packistry:0.6.0
-+ FROM ghcr.io/packistry/packistry:0.7.0
+- FROM ghcr.io/packistry/packistry:0.7.2
++ FROM ghcr.io/packistry/packistry:0.8.0
 ```
 
 **Run the Deployment**: After updating the `Dockerfile`, deploy the updated version by running:
