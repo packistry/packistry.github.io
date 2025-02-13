@@ -1,6 +1,6 @@
 ---
 title: Deploy Packistry with Kamal
-sidebar_position: 1
+sidebar_position: 2
 ---
 # Packistry Deployment with Kamal
 
@@ -42,10 +42,12 @@ volumes:
 proxy:
   host: [DOMAIN NAME] # e.g., packistry.com
   ssl: true # Create an A record for the domain name pointing to your server's IP, and Kamal will obtain a free TLS certificate via Let's Encrypt.
+  forward_headers: true # make sure the proxy forwards headers
 
 env:
   clear:
-    APP_URL: [APP_URL] # e.g., https://packistry.j4mie.com
+    APP_URL: https://[DOMAIN NAME] # e.g., https://packistryphp.com
+    TRUSTED_PROXIES: 172.18.0.2 # Also, make sure the proxy the headers are forwarded from is trusted; accepts multiple IPs, comma-separated.
   secret:
     - APP_KEY # value is set in secrets
 

@@ -2,7 +2,7 @@
 id: concepts
 title: Concepts Overview
 sidebar_label: Concepts
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Concepts Overview

@@ -1,6 +1,6 @@
 ---
 title: Using MySQL Database
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Installation with MySQL database

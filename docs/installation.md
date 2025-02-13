@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 # Installation
 
@@ -28,9 +28,9 @@ The default configuration uses SQLite and creates an archive directory for publi
 - A folder ./archives will hold the zip archives of published packages.
 
 For other setups:
-- [Packistry with MySQL database (Docker Compose)](../guides/mysql.md)
-- [Packistry with MySQL database and archives in S3 (Docker Compose)](../guides/store-archives-s3.md)
-- [Deploy using Kamal with free TLS certificate from let's encrypt](../guides/kamal.md)
+- [Packistry with MySQL database (Docker Compose)](guides/mysql.md)
+- [Packistry with MySQL database and archives in S3 (Docker Compose)](guides/store-archives-s3.md)
+- [Deploy using Kamal with free TLS certificate from let's encrypt](guides/kamal.md)
 :::
 
 ```yaml title="compose.yaml"

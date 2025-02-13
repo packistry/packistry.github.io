@@ -68,13 +68,21 @@ const config: Config = {
           items: [
             {
               label: 'Installation',
-              to: '/docs/getting-started/installation',
+              to: '/docs/installation',
             },
           ],
         },
         {
           title: 'Guides',
           items: [
+            {
+              label: 'Behind a Reverse Proxy',
+              to: '/docs/guides/behind-a-reverse-proxy',
+            },
+            {
+              label: 'Deploy Packistry with Kamal',
+              to: '/docs/guides/kamal',
+            },
             {
               label: 'Using MySQL Database',
               to: '/docs/guides/mysql',
@@ -83,10 +91,7 @@ const config: Config = {
               label: 'Store Package Archives in S3',
               to: '/docs/guides/store-archives-s3',
             },
-            {
-              label: 'Deploy Packistry with Kamal',
-              to: '/docs/guides/kamal',
-            },
+
           ],
         },
       ],
