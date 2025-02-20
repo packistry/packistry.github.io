@@ -53,7 +53,16 @@ volumes:
 > Alternatively, you can run Packistry directly with Docker: `docker run -p 80:80 -e APP_KEY=[app_key] -v /host/data/path:/data ghcr.io/packistry/packistry:latest`
 ---
 
-### 2. Create a User
+### 2. Start the container
+
+Run the following command to start the container:
+
+```bash
+docker compose up -d
+```
+---
+
+### 3. Create a User
 
 Once the server is running, create an admin user by running the following command:
 
@@ -65,31 +74,31 @@ Follow the prompts to set up your admin account.Follow the prompts to set up you
 
 ---
 
-### 3. Access the Web UI
+### 4. Access the Web UI
 
 After setting up the user, open your web browser and go to [http://localhost](https://localhost) to access the Packistry Web UI. Log in with the credentials you just created.
 
 ---
 
-### 4. Create a Repository
+### 5. Create a Repository
 
 Navigate to [http://localhost/repositories?open=true](http://localhost/repositories?open=true) and create a new repository to start managing your packages.
 
 ---
 
-### 5. Add Sources
+### 6. Add Sources
 
 Navigate to [http://localhost/sources?open=true](http://localhost/sources?open=true) to connect your repositories from platforms like GitHub, GitLab, Gitea or Bitbucket.
 
 ---
 
-### 6. Add a Package
+### 7. Add a Package
 
 To import repositories from the sources you set up, go to [http://localhost/packages?open=true](http://localhost/packages?open=true). Packistry will automatically configure webhooks to update your packages with the latest tags and branches.
 
 ---
 
-### 7. Add Packistry to Your Composer Configuration
+### 8. Add Packistry to Your Composer Configuration
 
 To integrate Packistry with Composer, add Packistry to your `composer.json` file. Replace `[url]` with the appropriate domain where Packistry is running:
 
@@ -105,7 +114,7 @@ composer config repositories.packistry composer [url]
 
 ---
 
-### 8A. Optionally, Authenticate with the Repository using deploy tokens
+### 9A. Optionally, Authenticate with the Repository using deploy tokens
 
 :::info
 Use a deploy token for CI, server access to repositories, or other integrations.
@@ -118,7 +127,7 @@ To generate a deploy token navigate to [http://localhost/deploy-tokens?open=true
 composer config bearer.[hostname] "pkdt-9m5HWKPaTg08fArR66zRAbthl7kEYBSIoxByltwibeb01ebf"
 ```
 
-### 8B. Optionally, Authenticate with the Repository using personal access tokens
+### 9B. Optionally, Authenticate with the Repository using personal access tokens
 :::info
 Use a personal token, for example, to authenticate your local machine.
 :::
@@ -132,7 +141,7 @@ composer config --global bearer.[hostname] "pkpat-9m5HWKPaTg08fArR66zRAbthl7kEYB
 
 ---
 
-### 9. Optionally, Allow Insecure HTTP Connections
+### 10. Optionally, Allow Insecure HTTP Connections
 
 If you are using Packistry over an unsecured HTTP connection (e.g., for local development), configure Composer to allow insecure connections:
 
@@ -144,7 +153,7 @@ composer config secure-http false
 
 ---
 
-### 10. Install a Package from Packistry
+### 11. Install a Package from Packistry
 
 Once your setup is complete, you can install a package from your Packistry repository. Replace `vendor/name` with the package you wish to install:
 
