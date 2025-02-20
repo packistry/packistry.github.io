@@ -23,12 +23,8 @@ After generating the `APP_KEY`, complete the rest of the `.env` file with the ne
 
 ```dotenv title=".env"
 APP_KEY=
-# If not running on http://localhost, set the appropriate APP_URL
-# APP_URL=packistry.your-domain.com
 
 # MySQL Configuration
-DB_CONNECTION=mysql
-DB_HOST=mysql
 DB_DATABASE=packistry
 DB_USERNAME=packistry
 DB_PASSWORD=
@@ -60,11 +56,11 @@ services:
     environment:
       - APP_KEY=${APP_KEY}
       # MySQL Configuration
-      - DB_CONNECTION=mysql
+      - DB_CONNECTION=${DB_CONNECTION:-mysql}
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_HOST=database
+      - DB_HOST=${DB_CONNECTION:-database}
       # S3 Configuration
       - FILESYSTEM_DISK=${FILESYSTEM_DISK}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}

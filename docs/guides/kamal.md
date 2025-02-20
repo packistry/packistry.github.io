@@ -46,7 +46,6 @@ proxy:
 
 env:
   clear:
-    APP_URL: https://[DOMAIN NAME] # e.g., https://packistryphp.com
     TRUSTED_PROXIES: 172.18.0.2 # Also, make sure the proxy the headers are forwarded from is trusted; accepts multiple IPs, comma-separated.
   secret:
     - APP_KEY # value is set in secrets

@@ -19,11 +19,6 @@ In the .env file, complete the remaining environment variables for the MySQL dat
 
 ```.env title=".env"
 APP_KEY=
-# Set APP_URL if not running on http://localhost
-#APP_URL=packistry.domain.com 
-
-DB_CONNECTION=mysql
-DB_HOST=mysql
 DB_DATABASE=packistry
 DB_USERNAME=packistry
 DB_PASSWORD=
@@ -40,11 +35,11 @@ services:
     restart: unless-stopped
     environment:
       - APP_KEY=${APP_KEY}
-      - DB_CONNECTION=mysql
+      - DB_CONNECTION=${DB_CONNECTION:-mysql}
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_HOST=database
+      - DB_HOST=${DB_CONNECTION:-database}
     ports:
       - "80:80"
     volumes:
