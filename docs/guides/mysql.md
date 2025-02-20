@@ -40,22 +40,19 @@ services:
     restart: unless-stopped
     environment:
       - APP_KEY=${APP_KEY}
-      # Uncomment and set APP_URL in .env if not running on http://localhost
-      # - APP_URL=${APP_URL} 
-      - DB_CONNECTION=${DB_CONNECTION}
+      - DB_CONNECTION=mysql
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_HOST=${DB_HOST}
+      - DB_HOST=database
     ports:
-      - 80:80
+      - "80:80"
     volumes:
-      # Store archives directory in the current directory
-      - ./:/data
+      - packistry-storage:/data
     depends_on:
-      mysql:
+      database:
         condition: service_healthy
-  mysql:
+  database:
     restart: unless-stopped
     image: 'mysql/mysql-server:8.0'
     environment:
@@ -75,6 +72,7 @@ services:
       retries: 3
       timeout: 5s
 volumes:
+  packistry-storage:
   mysql-data:
     driver: local
 ```

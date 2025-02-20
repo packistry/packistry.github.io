@@ -22,10 +22,10 @@ echo "APP_KEY=base64:$(openssl rand -base64 32)" >> .env
 Create a compose.yaml file for Docker Compose.
 
 :::info
-The default configuration uses SQLite and creates an archive directory for published packages in the current directory.
+The default configuration uses SQLite, which is created in the /data directory within the container. The /data directory also contains an archives subdirectory with zip files of the archives.
 
-- A SQLite database (database.sqlite) will be created in the current directory.
-- A folder ./archives will hold the zip archives of published packages.
+To retrieve the files for backup purposes, copy them out of the container using:  
+`docker cp CONTAINER_ID:/data ./path/on/host`
 
 For other setups:
 - [Packistry with MySQL database (Docker Compose)](guides/mysql.md)
@@ -40,13 +40,13 @@ services:
     restart: unless-stopped
     environment:
       - APP_KEY=${APP_KEY}
-      # Uncomment and set APP_URL in .env if not running on http://localhost
-      # - APP_URL=${APP_URL} 
     ports:
       - 80:80
     volumes:
-      # Use current directory to store database.sqlite and archives directory
-      - ./:/data
+      - packistry-storage:/data
+
+volumes:
+  packistry-storage:
 ```
 
 > _Ensure Docker Compose is installed and Docker is running on your system or cloud environment._

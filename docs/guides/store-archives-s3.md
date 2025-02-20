@@ -59,14 +59,12 @@ services:
     restart: unless-stopped
     environment:
       - APP_KEY=${APP_KEY}
-      # Uncomment and set if running on a custom domain
-      # - APP_URL=${APP_URL}
       # MySQL Configuration
-      - DB_CONNECTION=${DB_CONNECTION}
+      - DB_CONNECTION=mysql
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_HOST=${DB_HOST}
+      - DB_HOST=database
       # S3 Configuration
       - FILESYSTEM_DISK=${FILESYSTEM_DISK}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
@@ -79,9 +77,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./:/data
+      - packistry-storage:/data
     depends_on:
-      mysql:
+      database:
         condition: service_healthy
       minio:
         condition: service_healthy
@@ -103,7 +101,7 @@ services:
       retries: 3
       timeout: 5s
 
-  mysql:
+  database:
     image: mysql/mysql-server:8.0
     restart: unless-stopped
     ports:
@@ -122,6 +120,7 @@ services:
       timeout: 5s
 
 volumes:
+  packistry-storage:
   mysql-data:
     driver: local
   minio-data:
