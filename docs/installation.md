@@ -112,6 +112,14 @@ Run the following command:
 composer config repositories.packistry composer [url]
 ```
 
+When serving non-root repositories (e.g., with an additional path configured during creation), run the following command:
+
+```bash
+composer config repositories.packistry composer [url]/r/[path]
+```
+
+Alternatively, you can copy the correct command by clicking the clipboard icon on the repository or package page in the Packistry Web UI.
+
 ---
 
 ### 9A. Optionally, Authenticate with the Repository using deploy tokens
@@ -142,6 +150,17 @@ composer config --global bearer.[hostname] "pkpat-9m5HWKPaTg08fArR66zRAbthl7kEYB
 ---
 
 ### 10. Optionally, Allow Insecure HTTP Connections
+
+:::info
+
+If you are running Packistry behind a reverse proxy on a secure connection but still receive the error message: 
+
+`Your configuration does not allow connections to ... See https://getcomposer.org/doc/06-config.md#secure-http for details.`  
+
+Make sure to forward the headers from your proxy to Packistry and mark the proxy as trusted using `TRUSTED_PROXIES`. See the guide below for more information.
+
+- [Behind a Reverse Proxy](guides/behind-a-reverse-proxy.md)
+:::
 
 If you are using Packistry over an unsecured HTTP connection (e.g., for local development), configure Composer to allow insecure connections:
 
