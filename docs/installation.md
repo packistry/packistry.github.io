@@ -157,7 +157,7 @@ If you are running Packistry behind a reverse proxy on a secure connection but s
 
 `Your configuration does not allow connections to ... See https://getcomposer.org/doc/06-config.md#secure-http for details.`  
 
-Make sure to forward the headers from your proxy to Packistry and mark the proxy as trusted using `TRUSTED_PROXIES`. See the guide below for more information.
+Make sure and mark the proxy as trusted using `TRUSTED_PROXIES`. See the guide below for more information.
 
 - [Behind a Reverse Proxy](guides/behind-a-reverse-proxy.md)
 :::
