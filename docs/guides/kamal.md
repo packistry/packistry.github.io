@@ -42,11 +42,10 @@ volumes:
 proxy:
   host: [DOMAIN NAME] # e.g., packistry.com
   ssl: true # Create an A record for the domain name pointing to your server's IP, and Kamal will obtain a free TLS certificate via Let's Encrypt.
-  forward_headers: true # make sure the proxy forwards headers
 
 env:
   clear:
-    TRUSTED_PROXIES: 172.18.0.2 # Also, make sure the proxy the headers are forwarded from is trusted; accepts multiple IPs, comma-separated.
+    TRUSTED_PROXIES: * # Also, make sure the proxy the headers are forwarded from is trusted; accepts multiple IPs, comma-separated.
   secret:
     - APP_KEY # value is set in secrets
 

@@ -14,12 +14,11 @@ When running Packistry behind a reverse proxy, you need to ensure that headers a
 proxy:
   host: [DOMAIN NAME]
   ssl: true
-  forward_headers: true # make sure the proxy forwards headers
 
 env:
   clear:
     APP_URL: https://[DOMAIN NAME]
-    TRUSTED_PROXIES: 172.18.0.2 # Specify the trusted proxy IP(s), comma-separated if multiple
+    TRUSTED_PROXIES: *
   secret:
     - APP_KEY
 ...
