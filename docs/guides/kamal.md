@@ -45,7 +45,7 @@ proxy:
 
 env:
   clear:
-    TRUSTED_PROXIES: * # Also, make sure the proxy the headers are forwarded from is trusted; accepts multiple IPs, comma-separated.
+    TRUSTED_PROXIES: * # accepts *, one or multiple IPs comma-separated.
   secret:
     - APP_KEY # value is set in secrets
 

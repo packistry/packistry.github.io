@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Configuring Packistry Behind a Reverse Proxy
 
-When running Packistry behind a reverse proxy, you need to ensure that headers are forwarded correctly and that the proxy IP is trusted. Below is an  example configuration for [Kamal](https://kamal-deploy.org/) to achieve this.
+When running Packistry behind a reverse proxy, you need to ensure that the proxy IP is trusted. Below is an example configuration for [Kamal](https://kamal-deploy.org/) to achieve this.
 
 ### Example Configuration
 
