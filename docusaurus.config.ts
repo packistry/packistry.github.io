@@ -25,6 +25,12 @@ const config: Config = {
     locales: ['en'],
   },
 
+  scripts: [
+    {
+      src: 'https://scripts.simpleanalyticscdn.com/latest.js',
+      async: true,
+    },
+  ],
   presets: [
     [
       'classic',
