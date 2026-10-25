@@ -30,6 +30,16 @@ A **package** is a unit of software or code that is stored in a repository and c
 - Packages are added to repositories and can be managed through various commands.
 - You can delete packages when they are no longer relevant.
 
+## Upstreams
+
+An **upstream** is another Composer repository that Packistry mirrors, such as Packagist, a GitLab group registry or Private Packagist.
+
+- Upstreams are attached to repositories in priority order. Packages the repository does not have are served from the first upstream that has them.
+- Packistry caches the metadata and dists of mirrored packages, so installs keep working while an upstream is down.
+- Access to a repository includes its mirrored packages.
+
+See the [Upstream Mirroring guide](guides/upstream-mirroring.md) to set one up.
+
 ## Deploy Tokens
 
 **Deploy tokens** are used to grant access to private repositories. These tokens are typically used in CI/CD pipelines, automation tools, or by external services that need limited access to your repositories.
