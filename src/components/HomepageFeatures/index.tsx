@@ -38,7 +38,7 @@ const mirrorBenefits: MirrorBenefit[] = [
     {
         context: 'Internet traffic',
         figure: 'Once',
-        detail: 'Each package is downloaded once, not on every build. A new Laravel app pulls 17 MB.',
+        detail: 'Each package comes from the internet once, after that your builds get it from Packistry.',
     },
 ];
 
