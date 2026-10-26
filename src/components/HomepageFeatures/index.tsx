@@ -104,7 +104,7 @@ const features: FeatureItem[] = [
         description: (
             <>
                 Open source under GPL-3.0. Packages, tokens and download data stay on your infrastructure, in
-                SQLite or MySQL, with archives on disk or in S3.
+                SQLite, MySQL or PostgreSQL, with archives on disk or in S3.
             </>
         ),
         link: {
