@@ -8,8 +8,8 @@ import {ReactElement} from 'react';
 export default function Home(): ReactElement {
     return (
         <Layout
-            title="Self-hosted Composer registry"
-            description="Packistry is an open-source, self-hosted Composer registry for private PHP packages, with webhooks, tokens, SSO and Packagist mirroring."
+            title="Open-source Composer registry"
+            description="Packistry is an open-source Composer registry for private PHP packages that you can self-host, with webhooks, tokens, SSO and Packagist mirroring."
         >
             <HomepageHero />
 

@@ -21,13 +21,13 @@ export default function HomepageHero(): ReactElement {
                     </Link>
 
                     <Heading as="h1" className={styles.title}>
-                        Your PHP packages, on your own server, installing every time.
+                        Your PHP packages, under your control, installing every time.
                     </Heading>
 
                     <p className={styles.lead}>
-                        We think private packages shouldn't need a monthly SaaS bill or a setup held together
-                        with scripts, and a deploy shouldn't fail because Packagist or GitHub is having a bad
-                        day. Packistry is the Composer registry you run yourself, in one container.
+                        We think private packages should be simple to host and easy to control, and a deploy
+                        shouldn't fail because Packagist or GitHub is having a bad day. Packistry is an
+                        open-source Composer registry that runs in one container.
                     </p>
 
                     <div className={styles.buttons}>
