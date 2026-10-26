@@ -19,92 +19,47 @@ type FeatureItem = {
     extra?: ReactNode;
 };
 
-type BenchmarkRun = {
-    label: string;
-    seconds: number;
-    source: 'packistry' | 'packagist';
+type MirrorBenefit = {
+    context: string;
+    figure: string;
+    detail: ReactNode;
 };
 
-const benchmarkRuns: BenchmarkRun[] = [
+const mirrorBenefits: MirrorBenefit[] = [
     {
-        label: 'Packistry on the same network',
-        seconds: 2.0,
-        source: 'packistry',
+        context: 'During an outage',
+        figure: '2.3 s',
+        detail: 'A cached install with Packagist and GitHub unreachable still finishes.',
     },
     {
-        label: 'Packistry 30 ms away',
-        seconds: 2.6,
-        source: 'packistry',
+        context: 'On the same network as CI',
+        figure: '2× faster',
+        detail: '2.0 s instead of 4.2 s straight from Packagist.',
     },
     {
-        label: 'Straight from Packagist',
-        seconds: 4.2,
-        source: 'packagist',
+        context: 'Internet traffic',
+        figure: 'Once',
+        detail: "Each package is downloaded once, not on every build. That's 17 MB a build for this skeleton.",
     },
 ];
 
-function InstallBenchmark(): ReactElement {
-    const slowest = Math.max(...benchmarkRuns.map((run) => run.seconds));
-
+function MirrorBenefits(): ReactElement {
     return (
-        <figure className={styles.benchmark}>
-            {benchmarkRuns.map((run) => (
-                <div key={run.label} className={clsx(styles.benchmarkRow, styles[run.source])}>
-                    <span className={styles.benchmarkLabel}>{run.label}</span>
-
-                    <span className={styles.benchmarkTrack}>
-                        <span className={styles.benchmarkBar} style={{width: `${(run.seconds / slowest) * 100}%`}} />
-                    </span>
-
-                    <span className={styles.benchmarkValue}>{run.seconds.toFixed(1)} s</span>
-                </div>
-            ))}
-
-            <figcaption className={styles.benchmarkCaption}>
-                <code>composer install</code> from a lock file for the laravel/laravel skeleton (110 packages),
-                over HTTPS with an empty local cache. Median of seven runs.
-            </figcaption>
-        </figure>
-    );
-}
-
-type TrafficStat = {
-    amount: string;
-    label: string;
-    source: 'packistry' | 'packagist';
-};
-
-const trafficStats: TrafficStat[] = [
-    {
-        amount: '17 MB',
-        label: 'through Packistry on your network, plus new releases',
-        source: 'packistry',
-    },
-    {
-        amount: '17 GB',
-        label: 'straight from Packagist',
-        source: 'packagist',
-    },
-];
-
-function TrafficComparison(): ReactElement {
-    return (
-        <figure className={styles.traffic}>
-            <figcaption className={styles.trafficTitle}>Internet traffic for 1,000 builds</figcaption>
-
-            <div className={styles.trafficStats}>
-                {trafficStats.map((stat) => (
-                    <div key={stat.label} className={clsx(styles.trafficStat, styles[stat.source])}>
-                        <span className={styles.trafficAmount}>{stat.amount}</span>
-                        <span className={styles.trafficLabel}>{stat.label}</span>
+        <figure className={styles.benefits}>
+            <div className={styles.benefitGrid}>
+                {mirrorBenefits.map((benefit) => (
+                    <div key={benefit.context} className={styles.benefit}>
+                        <span className={styles.benefitContext}>{benefit.context}</span>
+                        <span className={styles.benefitFigure}>{benefit.figure}</span>
+                        <span className={styles.benefitDetail}>{benefit.detail}</span>
                     </div>
                 ))}
             </div>
 
-            <p className={styles.benchmarkCaption}>
-                One install of the same skeleton downloads about 17 MB of packages. Packistry fetches each one
-                from the internet once and serves it from your network after that.
-            </p>
+            <figcaption className={styles.benefitCaption}>
+                Measured with <code>composer install</code> for the laravel/laravel skeleton (110 packages) over
+                HTTPS, with an empty local cache. Median of seven runs.
+            </figcaption>
         </figure>
     );
 }
@@ -128,15 +83,12 @@ function DashboardScreenshot(): ReactElement {
 
 const features: FeatureItem[] = [
     {
-        title: 'Installs that survive outages',
+        title: "Builds that don't depend on Packagist",
         Svg: require('@site/static/img/refresh-cw.svg').default,
         description: (
             <>
-                Mirror Packagist, a GitLab group, Private Packagist, Satis or another Packistry. Metadata and
-                dists are cached, so <code>composer install</code> keeps working while an upstream is down. Put it
-                on the same network as your CI and installs take about half the time. Your builds also stop
-                downloading the same packages over and over, which adds up on metered connections such as a cloud
-                NAT gateway.
+                Mirror Packagist, a GitLab group, Private Packagist, Satis or another Packistry. Packistry caches
+                the metadata and dists of everything you install, so your builds only need to reach Packistry.
             </>
         ),
         link: {
@@ -144,12 +96,7 @@ const features: FeatureItem[] = [
             to: '/docs/guides/upstream-mirroring',
         },
         featured: true,
-        extra: (
-            <>
-                <InstallBenchmark />
-                <TrafficComparison />
-            </>
-        ),
+        extra: <MirrorBenefits />,
     },
     {
         title: 'Yours to run',

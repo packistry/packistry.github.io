@@ -83,98 +83,52 @@
   min-width: 0;
 }
 
-.benchmark {
+.benefits {
   margin: 0;
-  padding-top: 1.25rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--border-color);
 }
 
-.benchmarkRow {
+.benefitGrid {
   display: grid;
-  grid-template-columns: 14.5rem minmax(0, 1fr) 3.5rem;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-  font-size: 0.925rem;
-}
-
-.benchmarkTrack {
-  display: block;
-  height: 0.625rem;
-  border-radius: 999px;
-  background-color: var(--border-color);
-  overflow: hidden;
-}
-
-.benchmarkBar {
-  display: block;
-  height: 100%;
-  border-radius: 999px;
-  background-color: var(--ifm-font-color-base);
-}
-
-.packagist .benchmarkBar {
-  background-color: var(--muted-color);
-}
-
-.packagist .benchmarkLabel,
-.packagist .benchmarkValue {
-  color: var(--muted-color);
-}
-
-.benchmarkValue {
-  font-variant-numeric: tabular-nums;
-  font-weight: 600;
-  text-align: right;
-}
-
-.benchmarkCaption {
-  margin-top: 0.25rem;
-  color: var(--muted-color);
-  font-size: 0.825rem;
-}
-
-.traffic {
-  margin: 1.25rem 0 0;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.trafficTitle {
-  margin-bottom: 0.75rem;
-  font-size: 0.925rem;
-}
-
-.trafficStats {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
-.trafficStat {
+.benefit {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
-  padding: 0.875rem 1rem;
+  gap: 0.25rem;
+  padding: 1rem 1.125rem;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   background-color: var(--background-color);
 }
 
-.trafficAmount {
-  font-size: 1.5rem;
+.benefitContext {
+  color: var(--muted-color);
+  font-size: 0.825rem;
+}
+
+.benefitFigure {
+  font-size: 1.75rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
-.trafficLabel {
+.benefitDetail {
+  margin-top: 0.25rem;
   color: var(--muted-color);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
-.packagist .trafficAmount {
+.benefitCaption {
+  margin-top: 1rem;
   color: var(--muted-color);
+  font-size: 0.8rem;
 }
 
 .screenshot {
@@ -212,16 +166,7 @@
     padding: 1.25rem;
   }
 
-  .benchmarkRow {
-    grid-template-columns: minmax(0, 1fr) 3.5rem;
-    gap: 0.375rem 1rem;
-  }
-
-  .benchmarkLabel {
-    grid-column: 1 / -1;
-  }
-
-  .trafficStats {
+  .benefitGrid {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.625rem;
   }
