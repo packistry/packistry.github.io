@@ -15,7 +15,7 @@ type FeatureItem = {
         label: string;
         to: string;
     };
-    span?: 'wide' | 'full';
+    featured?: boolean;
     extra?: ReactNode;
 };
 
@@ -68,6 +68,47 @@ function InstallBenchmark(): ReactElement {
     );
 }
 
+type TrafficStat = {
+    amount: string;
+    label: string;
+    source: 'packistry' | 'packagist';
+};
+
+const trafficStats: TrafficStat[] = [
+    {
+        amount: '17 MB',
+        label: 'through Packistry on your network, plus new releases',
+        source: 'packistry',
+    },
+    {
+        amount: '17 GB',
+        label: 'straight from Packagist',
+        source: 'packagist',
+    },
+];
+
+function TrafficComparison(): ReactElement {
+    return (
+        <figure className={styles.traffic}>
+            <figcaption className={styles.trafficTitle}>Internet traffic for 1,000 builds</figcaption>
+
+            <div className={styles.trafficStats}>
+                {trafficStats.map((stat) => (
+                    <div key={stat.label} className={clsx(styles.trafficStat, styles[stat.source])}>
+                        <span className={styles.trafficAmount}>{stat.amount}</span>
+                        <span className={styles.trafficLabel}>{stat.label}</span>
+                    </div>
+                ))}
+            </div>
+
+            <p className={styles.benchmarkCaption}>
+                One install of the same skeleton downloads about 17 MB of packages. Packistry fetches each one
+                from the internet once and serves it from your network after that.
+            </p>
+        </figure>
+    );
+}
+
 function DashboardScreenshot(): ReactElement {
     const sources = {
         light: useBaseUrl('/img/home/dashboard-light.webp'),
@@ -92,17 +133,23 @@ const features: FeatureItem[] = [
         description: (
             <>
                 Mirror Packagist, a GitLab group, Private Packagist, Satis or another Packistry. Metadata and
-                dists are cached, so <code>composer install</code> keeps working while an upstream is down. Run it
-                close to your builds and installs take about half the time. Each package is downloaded from the
-                internet once, not on every build, which keeps bandwidth costs down.
+                dists are cached, so <code>composer install</code> keeps working while an upstream is down. Put it
+                on the same network as your CI and installs take about half the time. Your builds also stop
+                downloading the same packages over and over, which adds up on metered connections such as a cloud
+                NAT gateway.
             </>
         ),
         link: {
             label: 'Set up mirroring',
             to: '/docs/guides/upstream-mirroring',
         },
-        span: 'wide',
-        extra: <InstallBenchmark />,
+        featured: true,
+        extra: (
+            <>
+                <InstallBenchmark />
+                <TrafficComparison />
+            </>
+        ),
     },
     {
         title: 'Yours to run',
@@ -168,14 +215,13 @@ const features: FeatureItem[] = [
                 Download counts per package, with 90-day charts on the dashboard and on every package page.
             </>
         ),
-        span: 'full',
         extra: <DashboardScreenshot />,
     },
 ];
 
-function Feature({title, Svg, description, link, span, extra}: FeatureItem): ReactElement {
+function Feature({title, Svg, description, link, featured, extra}: FeatureItem): ReactElement {
     return (
-        <article className={clsx(styles.card, span && styles[span])}>
+        <article className={clsx(styles.card, featured && styles.featured)}>
             <div className={styles.text}>
                 <span className={styles.icon}>
                     <Svg aria-hidden="true" />
