@@ -6,6 +6,7 @@
   margin-bottom: 3rem;
   font-size: 2rem;
   text-align: center;
+  text-wrap: balance;
 }
 
 .grid {
