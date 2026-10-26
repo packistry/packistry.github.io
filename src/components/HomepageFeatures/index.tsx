@@ -39,7 +39,7 @@ const mirrorBenefits: MirrorBenefit[] = [
     {
         context: 'Internet traffic',
         figure: 'Once',
-        detail: "Each package is downloaded once, not on every build. That's 17 MB a build for this skeleton.",
+        detail: 'Each package is downloaded once, not on every build. A new Laravel app pulls 17 MB.',
     },
 ];
 
@@ -57,8 +57,8 @@ function MirrorBenefits(): ReactElement {
             </div>
 
             <figcaption className={styles.benefitCaption}>
-                Measured with <code>composer install</code> for the laravel/laravel skeleton (110 packages) over
-                HTTPS, with an empty local cache. Median of seven runs.
+                Measured with <code>composer install</code> for a new Laravel app (110 packages) over HTTPS, with
+                an empty local cache. Median of seven runs.
             </figcaption>
         </figure>
     );
@@ -75,8 +75,8 @@ function DashboardScreenshot(): ReactElement {
             className={styles.screenshot}
             sources={sources}
             alt="The Packistry dashboard with a chart of downloads over the last 90 days"
-            width={1800}
-            height={679}
+            width={1162}
+            height={798}
         />
     );
 }
