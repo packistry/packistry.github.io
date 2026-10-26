@@ -114,6 +114,11 @@
   color: var(--muted-color);
 }
 
+.benefit a {
+  color: var(--ifm-font-color-base);
+  text-decoration: underline;
+}
+
 .code {
   margin: 0.875rem 0 0;
 }

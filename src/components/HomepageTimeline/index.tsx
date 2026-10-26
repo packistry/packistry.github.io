@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import CodeBlock from '@theme/CodeBlock';
 import Heading from '@theme/Heading';
 import {ReactElement, ReactNode} from 'react';
@@ -27,7 +28,8 @@ const steps: Step[] = [
         benefit: (
             <>
                 Link GitHub, GitLab, Gitea or Bitbucket and Packistry adds the webhooks for you, so new tags
-                arrive on their own. No Git host? Upload zips from CI with a write token.
+                arrive on their own. No Git host?{' '}
+                <Link to="/docs/concepts#uploading-packages">Upload zips from CI</Link> with a write token.
             </>
         ),
     },
