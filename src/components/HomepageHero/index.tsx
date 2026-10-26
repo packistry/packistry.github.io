@@ -1,0 +1,64 @@
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Heading from '@theme/Heading';
+import ThemedImage from '@theme/ThemedImage';
+import {ReactElement} from 'react';
+
+import styles from './styles.module.css';
+
+export default function HomepageHero(): ReactElement {
+    const screenshot = {
+        light: useBaseUrl('/img/home/packages-light.webp'),
+        dark: useBaseUrl('/img/home/packages-dark.webp'),
+    };
+
+    return (
+        <header className={styles.hero}>
+            <div className="container">
+                <div className={styles.intro}>
+                    <Link className={styles.announcement} to="/docs/guides/upstream-mirroring">
+                        New in 0.16: upstream mirroring →
+                    </Link>
+
+                    <Heading as="h1" className={styles.title}>
+                        Your PHP packages, on your own server, installing every time.
+                    </Heading>
+
+                    <p className={styles.lead}>
+                        We think private packages shouldn't need a monthly SaaS bill or a setup held together
+                        with scripts, and a deploy shouldn't fail because Packagist or GitHub is having a bad
+                        day. Packistry is the Composer registry you run yourself, in one container.
+                    </p>
+
+                    <div className={styles.buttons}>
+                        <Link className="button button--lg" to="/docs/installation">
+                            Get started
+                        </Link>
+
+                        <Link className="button button--lg button--outline" href="https://github.com/packistry/packistry">
+                            View on GitHub
+                        </Link>
+                    </div>
+
+                    <p className={styles.license}>Free and open source under GPL-3.0</p>
+                </div>
+
+                <div className={styles.frame}>
+                    <div className={styles.frameBar} aria-hidden="true">
+                        <span />
+                        <span />
+                        <span />
+                    </div>
+
+                    <ThemedImage
+                        className={styles.screenshot}
+                        sources={screenshot}
+                        alt="The Packistry packages page, listing private and mirrored packages"
+                        width={2200}
+                        height={1375}
+                    />
+                </div>
+            </div>
+        </header>
+    );
+}

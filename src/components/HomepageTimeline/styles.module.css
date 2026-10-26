@@ -1,0 +1,150 @@
+.section {
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 2rem;
+  line-height: 1.2;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.heading code {
+  font-size: 0.85em;
+  vertical-align: baseline;
+}
+
+.subheading {
+  margin: 0.75rem 0 3rem;
+  color: var(--muted-color);
+  text-align: center;
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 2.5rem;
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  top: 2.25rem;
+  bottom: 0.25rem;
+  left: 1rem;
+  border-left: 1px solid var(--border-strong-color);
+}
+
+.step:last-child::before {
+  display: none;
+}
+
+.step:has(+ .optional)::before {
+  border-left-style: dashed;
+}
+
+.marker {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--border-strong-color);
+  border-radius: 50%;
+  background-color: var(--background-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.step:first-child .marker {
+  border-color: var(--button-background-color);
+  background-color: var(--button-background-color);
+  color: var(--button-color);
+}
+
+.optional .marker {
+  border-style: dashed;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  padding-top: 0.25rem;
+}
+
+.stepTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.15rem;
+}
+
+.pill {
+  padding: 0.05rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  color: var(--muted-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.benefit {
+  margin-bottom: 0;
+  color: var(--muted-color);
+}
+
+.code {
+  margin: 0.875rem 0 0;
+}
+
+@media screen and (max-width: 996px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .step {
+    gap: 0.875rem;
+  }
+
+  .step::before {
+    top: 1.875rem;
+    left: 0.8125rem;
+  }
+
+  .marker {
+    width: 1.625rem;
+    height: 1.625rem;
+    font-size: 0.8rem;
+  }
+
+  .body {
+    padding-top: 0.1rem;
+  }
+}

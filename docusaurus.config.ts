@@ -4,7 +4,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Packistry',
-  tagline: 'Open Source, Self-Hosted, Composer repository for PHP packages',
+  tagline: 'The open-source Composer registry you run yourself',
+  favicon: 'img/favicon.svg',
 
   url: 'https://packistry.github.io',
   baseUrl: '/',
@@ -52,6 +53,11 @@ const config: Config = {
   themeConfig: {
     navbar: {
       title: 'Packistry',
+      logo: {
+        alt: 'Packistry',
+        src: 'img/logo.svg',
+        srcDark: 'img/logo-dark.svg',
+      },
       items: [
         {
           type: 'docSidebar',
