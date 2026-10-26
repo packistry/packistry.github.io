@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import Heading from '@theme/Heading';
-import ThemedImage from '@theme/ThemedImage';
+import ThemedScreenshot from '@site/src/components/ThemedScreenshot';
 import {ComponentProps, ComponentType, ReactElement, ReactNode} from 'react';
 
 import styles from './styles.module.css';
@@ -65,15 +64,11 @@ function MirrorBenefits(): ReactElement {
 }
 
 function DashboardScreenshot(): ReactElement {
-    const sources = {
-        light: useBaseUrl('/img/home/dashboard-light.webp'),
-        dark: useBaseUrl('/img/home/dashboard-dark.webp'),
-    };
-
     return (
-        <ThemedImage
+        <ThemedScreenshot
             className={styles.screenshot}
-            sources={sources}
+            light="/img/home/dashboard-light.webp"
+            dark="/img/home/dashboard-dark.webp"
             alt="The Packistry dashboard with a chart of downloads over the last 90 days"
             width={1162}
             height={798}

@@ -1,17 +1,11 @@
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import Heading from '@theme/Heading';
-import ThemedImage from '@theme/ThemedImage';
+import ThemedScreenshot from '@site/src/components/ThemedScreenshot';
 import {ReactElement} from 'react';
 
 import styles from './styles.module.css';
 
 export default function HomepageHero(): ReactElement {
-    const screenshot = {
-        light: useBaseUrl('/img/home/packages-light.webp'),
-        dark: useBaseUrl('/img/home/packages-dark.webp'),
-    };
-
     return (
         <header className={styles.hero}>
             <div className="container">
@@ -50,9 +44,9 @@ export default function HomepageHero(): ReactElement {
                         <span />
                     </div>
 
-                    <ThemedImage
-                        className={styles.screenshot}
-                        sources={screenshot}
+                    <ThemedScreenshot
+                        light="/img/home/packages-light.webp"
+                        dark="/img/home/packages-dark.webp"
                         alt="The Packistry packages page, listing private and mirrored packages"
                         width={2200}
                         height={1375}

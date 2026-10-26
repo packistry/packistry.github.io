@@ -98,12 +98,6 @@
   background-color: var(--border-strong-color);
 }
 
-.screenshot {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
 @media screen and (max-width: 996px) {
   .hero {
     padding: 3.5rem 0 2.5rem;

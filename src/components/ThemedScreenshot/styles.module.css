@@ -1,0 +1,24 @@
+.stack {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity var(--ifm-transition-fast) ease-in-out;
+}
+
+.dark {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+[data-theme='light'] .dark,
+[data-theme='dark'] .light {
+  opacity: 0;
+  pointer-events: none;
+}
