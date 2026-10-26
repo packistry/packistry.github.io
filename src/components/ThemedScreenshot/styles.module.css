@@ -10,12 +10,15 @@
   height: auto;
 }
 
-/* Only the dark variant fades, over a fully visible light variant, so the background never shows through */
+/*
+ * Only the dark variant fades, over a fully visible light variant, so the background never shows through.
+ * The page background switches instantly, so the fade takes half of the theme's fast transition to keep up.
+ */
 .dark {
   position: absolute;
   inset: 0;
   height: 100%;
-  transition: opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  transition: opacity calc(var(--ifm-transition-fast) / 2) var(--ifm-transition-timing-default);
   /* Keeps the image on its own layer, so the first frame of the fade isn't delayed by promoting it */
   will-change: opacity;
 }
