@@ -30,6 +30,28 @@ A **package** is a unit of software or code that is stored in a repository and c
 - Packages are added to repositories and can be managed through various commands.
 - You can delete packages when they are no longer relevant.
 
+### Importing Packages
+
+Packages imported from a source take their name from the `composer.json` of their first imported version. When a newer version has a different name, the package is renamed, but only within the same vendor. A version that renames the package to another vendor is rejected.
+
+### Uploading Packages
+
+You can also upload a zip of a package version to a repository:
+
+```bash
+curl -X POST https://packistry.example/r/company/acme/package \
+  -H "Authorization: Bearer pkpat-..." \
+  -F file=@package.zip \
+  -F version=1.0.0
+```
+
+- The token needs the **Write** ability.
+- The token, or the user of a personal token, needs a grant on the repository, or a grant on the existing package. Only a repository grant can create new packages. Access through a public repository is not enough. Admins can upload to every repository.
+- The name in `composer.json` must match the package in the URL. Uploads cannot rename a package.
+- `version` is optional when `composer.json` contains a version.
+- Versions with constraints Composer cannot parse are rejected. Use [`versions:clean`](commands/versions-clean.md) to remove such versions stored by earlier releases.
+- Uploading a version of a mirrored package turns it into a local package.
+
 ## Upstreams
 
 An **upstream** is another Composer repository that Packistry mirrors, such as Packagist, a GitLab group registry or Private Packagist.
@@ -46,15 +68,28 @@ See the [Upstream Mirroring guide](guides/upstream-mirroring.md) to set one up.
 
 - Deploy tokens provide an easy way to securely grant access to packages in private repositories.
 - Deploy Tokens are tied to specific repositories.
+- Deploy Tokens have the **Read** and **Write** abilities, and never have access to the Packistry API.
 - Deploy Tokens can be recognized by the prefix `pkdt-`
 
 ## Personal Tokens
 
-**Personal tokens** are used to grant access to private repositories your have access to. These tokens are typically used on your local machine.
+**Personal tokens** are used to grant access to private repositories you have access to. These tokens are typically used on your local machine.
 
 - Personal tokens provide an easy way to securely grant access to packages in private repositories.
 - Personal Tokens are tied to a specific user
 - Personal Tokens can be recognized by the prefix `pkpat-`
+
+Personal tokens have one or more abilities:
+
+| Ability | Allows                                                            |
+|---------|-------------------------------------------------------------------|
+| Read    | Installing packages with Composer                                 |
+| Write   | [Uploading package versions](#uploading-packages)                 |
+| API     | Using the Packistry API, with the permissions of the token's user |
+
+:::info
+Since 0.16.0, only tokens with the **API** ability can use the Packistry API. Existing tokens lost API access, create a new token with the **API** ability where needed.
+:::
 
 
 ## Users and Roles
@@ -65,6 +100,14 @@ Packistry allows you to manage **users**, each of whom is assigned a specific **
 - **User**: Limited access, often restricted to specific repositories.
 
 You can assign repositories to individual users, granting them access only to the packages they need.
+
+#### Logging In
+
+Users log in to the web UI with their email and password, or through an [authentication source](#authentication-sources).
+
+- After 5 failed login attempts for the same email and IP address, logging in is blocked for up to a minute.
+- Logging out ends the session.
+- Changing a password logs out all other sessions of that user.
 
 ## Authentication Sources
 

@@ -32,6 +32,8 @@ Mirrors public packages from packagist.org, no URL needed.
 
 Adding a GitHub token is recommended. Most Packagist dists are downloaded from GitHub, which limits anonymous downloads to 60 per hour. A token without any scopes is enough.
 
+A Packagist upstream with a GitHub token counts as private, so it cannot be used by public repositories. See [Access](#access).
+
 ### Composer repository
 
 Any Composer 2 repository. Enter the URL of the repository or its `packages.json`, for example:
@@ -42,7 +44,7 @@ Any Composer 2 repository. Enter the URL of the repository or its `packages.json
 
 #### Credentials
 
-Credentials are configured per host and are only sent to that host. The following types are supported:
+Credentials are configured per host and are only sent to that host. Add them as credentials, not in the URL: URLs such as `https://user:token@gitlab.com/...` are rejected. The following types are supported:
 
 | Type       | Use for                                                       |
 |------------|---------------------------------------------------------------|
@@ -51,6 +53,8 @@ Credentials are configured per host and are only sent to that host. The followin
 | Header     | A token sent in a custom header, such as GitLab's `PRIVATE-TOKEN` |
 
 For a GitLab group, add an **HTTP Basic** credential for `gitlab.com` (or your own GitLab host) with a deploy token that has the `read_package_registry` scope. Use the deploy token's username as username and the token as password.
+
+Stored secrets are never shown again. Leave the secret empty to keep it. When you change the host of a credential, enter its secret again, so a secret is never sent to a host it was not entered for.
 
 :::info
 Use **Test connection** on the upstream to check that Packistry can reach it with the configured credentials.
@@ -64,6 +68,12 @@ Filters limit which packages an upstream is asked for:
 - **Exclude packages**: never ask this upstream for packages matching one of these patterns.
 
 Use **Only these packages** for private upstreams. It keeps lookups fast, and makes sure the names of your private packages are never sent to other upstreams like Packagist.
+
+---
+
+### Changing the URL
+
+Changing the URL of an upstream clears its cached metadata and dists. Mirrored packages stay with the upstream and are fetched from the new URL on the next request.
 
 ---
 
@@ -104,8 +114,18 @@ Upstreams are part of a repository, so access to a repository includes all of it
 To give someone access to only some upstreams, create a separate repository with just those upstreams.
 
 :::warning
-Anyone can download the packages of a public repository, including its mirrored packages. Upstreams that authenticate against their own host, such as a private GitLab group, cannot be used by public repositories.
+Anyone can download the packages of a public repository, including its mirrored packages. Upstreams with any credential count as private and cannot be used by public repositories. This includes a Packagist upstream with a GitHub token, as the upstream decides which dist URLs that token is sent to.
 :::
+
+---
+
+## Missing Packages
+
+A mirrored package stays with the upstream that first served it. When that upstream answers that it no longer has the package, the package is marked missing and installs of it fail. It is not handed to the next upstream, so another upstream cannot take over the name of a private package, for example when credentials expire.
+
+The package becomes available again as soon as its upstream has it again. To move it to another upstream, an admin uses **Refresh from upstream** on the package. This fetches its metadata from its upstream right away, and resolves the package again through the repository's upstreams when its upstream no longer has it.
+
+When an upstream is removed from a repository, its packages are resolved again on their next request.
 
 ---
 
@@ -113,7 +133,7 @@ Anyone can download the packages of a public repository, including its mirrored 
 
 Packistry does not connect to private or reserved addresses, such as loopback, private networks and cloud metadata endpoints, on behalf of an upstream. This includes metadata urls, dist urls and redirects. Only zip dists are mirrored.
 
-To mirror an internal registry, such as a self-hosted GitLab, allow its host:
+To mirror an internal registry, such as a self-hosted GitLab, allow its host. Use `*` to allow every host.
 
 ```dotenv title=".env"
 MIRROR_ALLOWED_HOSTS=gitlab.internal,satis.internal
@@ -147,7 +167,7 @@ Mirroring can be tuned with the following environment variables. Durations are i
 | `MIRROR_METADATA_TTL`     | `300`   | How long cached metadata is served before it is revalidated upstream       |
 | `MIRROR_NOT_FOUND_TTL`    | `600`   | How long an upstream's "package not found" answer is cached                |
 | `MIRROR_DOWN_TTL`         | `60`    | How long an upstream is skipped after it failed to respond                 |
-| `MIRROR_ROOT_TTL`         | `86400` | How long an upstream's `packages.json` is cached                           |
+| `MIRROR_ROOT_TTL`         | `86400` | How long the metadata URL from an upstream's `packages.json` is trusted    |
 | `MIRROR_CONNECT_TIMEOUT`  | `5`     | Connect timeout for upstream requests                                       |
 | `MIRROR_TIMEOUT`          | `15`    | Timeout for upstream metadata requests                                      |
 | `MIRROR_DOWNLOAD_TIMEOUT` | `300`   | Timeout for downloading a dist                                              |

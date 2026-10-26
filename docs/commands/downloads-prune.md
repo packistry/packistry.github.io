@@ -11,6 +11,8 @@ The `downloads:prune` command removes old download records. The total download c
 
 Packistry does not run this command itself, so schedule it, for example with a monthly cron job.
 
+Do not run `recalculate:total-downloads` after pruning, as it recalculates the totals from the remaining records.
+
 ## How to Run the Command
 
 ```bash
