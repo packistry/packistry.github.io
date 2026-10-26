@@ -38,7 +38,12 @@ const mirrorBenefits: MirrorBenefit[] = [
     {
         context: 'Internet traffic',
         figure: 'Once',
-        detail: 'Each package comes from the internet once, after that your builds get it from Packistry.',
+        detail: (
+            <>
+                Each package comes from the internet once. After that your builds get it from Packistry, saving
+                traffic and time.
+            </>
+        ),
     },
 ];
 
