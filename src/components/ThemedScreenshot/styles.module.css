@@ -8,17 +8,17 @@
   display: block;
   width: 100%;
   height: auto;
-  transition: opacity var(--ifm-transition-fast) ease-in-out;
 }
 
+/* Only the dark variant fades, over a fully visible light variant, so the background never shows through */
 .dark {
   position: absolute;
   inset: 0;
   height: 100%;
+  transition: opacity var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
-[data-theme='light'] .dark,
-[data-theme='dark'] .light {
+[data-theme='light'] .dark {
   opacity: 0;
   pointer-events: none;
 }

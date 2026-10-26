@@ -23,7 +23,7 @@
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   background-color: var(--surface-color);
-  transition: border-color 150ms ease;
+  transition: border-color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
 .card:hover {
