@@ -1,12 +1,169 @@
-.features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
-  min-height: 550px;
+.section {
+  padding: 6rem 0;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.heading {
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--surface-color);
+  transition: border-color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+}
+
+.card:hover {
+  border-color: var(--border-strong-color);
+}
+
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--background-color);
+}
+
+.icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+}
+
+.description {
+  margin-bottom: 0;
+  color: var(--muted-color);
+}
+
+.link {
+  margin-top: 1rem;
+  color: var(--ifm-font-color-base);
+  font-size: 0.925rem;
+  font-weight: 600;
+}
+
+.link:hover {
+  color: var(--ifm-font-color-base);
+}
+
+.extra {
+  min-width: 0;
+}
+
+.benefits {
+  margin: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.benefitGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--background-color);
+}
+
+.benefitContext {
+  color: var(--muted-color);
+  font-size: 0.825rem;
+}
+
+.benefitFigure {
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.benefitDetail {
+  margin-top: 0.25rem;
+  color: var(--muted-color);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.benefitCaption {
+  margin-top: 1rem;
+  color: var(--muted-color);
+  font-size: 0.8rem;
+}
+
+.screenshot {
+  border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 996px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .featured {
+    grid-row: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .featured {
+    grid-column: auto;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .benefitGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.625rem;
+  }
 }
