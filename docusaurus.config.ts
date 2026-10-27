@@ -7,7 +7,7 @@ const config: Config = {
   tagline: 'The open-source Composer registry for PHP packages',
   favicon: 'img/favicon.svg',
 
-  url: 'https://packistry.github.io',
+  url: 'https://packistryphp.com',
   baseUrl: '/',
 
   organizationName: 'packistry',
@@ -51,6 +51,7 @@ const config: Config = {
   ],
 
   themeConfig: {
+    image: 'img/social-card.png',
     navbar: {
       title: 'Packistry',
       logo: {

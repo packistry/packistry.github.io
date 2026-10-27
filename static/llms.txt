@@ -1,0 +1,37 @@
+# Packistry
+
+> Packistry is an open-source Composer registry for private PHP packages, licensed under GPL-3.0. It runs as a single
+> Docker image (ghcr.io/packistry/packistry) that you can self-host, stores its data in SQLite, MySQL or PostgreSQL,
+> and keeps package archives on disk or in S3.
+
+Packistry imports packages from GitHub, GitLab, Gitea and Bitbucket and keeps them up to date through webhooks.
+Packages can also be uploaded as zip files with a token that has write access. Composer installs packages from
+Packistry like from any other Composer repository.
+
+Packistry can mirror other Composer repositories, called upstreams, such as Packagist, a GitLab group registry,
+Private Packagist, Satis or another Packistry. It caches the metadata and dists of mirrored packages, so
+`composer install` keeps working while an upstream is down, and builds only need to reach Packistry.
+
+Access is controlled with tokens. Deploy tokens for CI are scoped to repositories or single packages, and personal
+tokens act on behalf of a user. Both have read or write access and an optional expiry date. Users can sign in with SSO through OpenID Connect
+(for example Okta, Keycloak or Microsoft Entra ID), GitHub, GitLab, Bitbucket or Google. Packistry records download
+counts per package and shows 90-day download charts.
+
+## Docs
+
+- [Introduction](https://packistryphp.com/docs/intro): what Packistry is and its main features
+- [Installation](https://packistryphp.com/docs/installation): run Packistry with Docker, create a user, add sources and packages, and configure Composer and tokens
+- [Concepts](https://packistryphp.com/docs/concepts): repositories, sources, packages, uploads, upstreams, deploy and personal tokens, users and roles, and authentication sources
+
+## Guides
+
+- [Upstream Mirroring](https://packistryphp.com/docs/guides/upstream-mirroring): mirror Packagist and private Composer repositories, credentials, filters and configuration
+- [Behind a Reverse Proxy](https://packistryphp.com/docs/guides/behind-a-reverse-proxy): run Packistry behind a proxy that terminates TLS
+- [Using MySQL Database](https://packistryphp.com/docs/guides/mysql): Docker Compose setup with MySQL
+- [Store Package Archives in S3](https://packistryphp.com/docs/guides/store-archives-s3): keep package archives in S3-compatible storage
+- [Deploy Packistry with Kamal](https://packistryphp.com/docs/guides/kamal): deploy with Kamal and a free TLS certificate
+
+## Optional
+
+- [CLI commands](https://packistryphp.com/docs/category/cli-commands): commands for users, repositories, sources, packages, tokens, mirror maintenance and cleanup
+- [Source code](https://github.com/packistry/packistry): the Packistry repository on GitHub
