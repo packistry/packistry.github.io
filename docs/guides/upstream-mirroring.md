@@ -15,7 +15,8 @@ Upstreams are attached to a repository in priority order. When a package is requ
 
 - The first upstream that has the package serves it. Versions of different upstreams are never merged.
 - Packages of the repository itself always take precedence over mirrored packages.
-- Metadata is cached and revalidated every 5 minutes. Every dist is downloaded from the upstream once.
+- Metadata is cached for 5 minutes. After that, cached metadata is still served right away and rechecked with the upstream in the background. When it has not been checked for a day, requests wait for the upstream again.
+- Every dist is downloaded from the upstream once.
 - When an upstream is down, the cached metadata and dists keep being served.
 
 Mirrored packages show up under the **Mirrored** tab on the packages page.
@@ -121,7 +122,7 @@ Anyone can download the packages of a public repository, including its mirrored 
 
 ## Missing Packages
 
-A mirrored package stays with the upstream that first served it. When that upstream answers that it no longer has the package, the package is marked missing and installs of it fail. It is not handed to the next upstream, so another upstream cannot take over the name of a private package, for example when credentials expire.
+A mirrored package stays with the upstream that first served it. When that upstream answers that it no longer has the package, the package is marked missing and installs of it fail. As expired metadata is still served while it is rechecked, this shows one request after the metadata expired. It is not handed to the next upstream, so another upstream cannot take over the name of a private package, for example when credentials expire.
 
 The package becomes available again as soon as its upstream has it again. To move it to another upstream, an admin uses **Refresh from upstream** on the package. This fetches its metadata from its upstream right away, and resolves the package again through the repository's upstreams when its upstream no longer has it.
 
@@ -164,7 +165,8 @@ Mirroring can be tuned with the following environment variables. Durations are i
 
 | Variable                  | Default | Description                                                                 |
 |---------------------------|---------|-----------------------------------------------------------------------------|
-| `MIRROR_METADATA_TTL`     | `300`   | How long cached metadata is served before it is revalidated upstream       |
+| `MIRROR_METADATA_TTL`     | `300`   | How long cached metadata is served before it is rechecked in the background |
+| `MIRROR_METADATA_STALE_TTL` | `86400` | How long expired metadata is still served right away while it is rechecked in the background. After that, requests wait for the upstream. `0` always waits |
 | `MIRROR_NOT_FOUND_TTL`    | `600`   | How long an upstream's "package not found" answer is cached                |
 | `MIRROR_DOWN_TTL`         | `60`    | How long an upstream is skipped after it failed to respond                 |
 | `MIRROR_ROOT_TTL`         | `86400` | How long the metadata URL from an upstream's `packages.json` is trusted    |
